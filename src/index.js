@@ -8,7 +8,7 @@ import route from "./resources/directions/route/routeIndex.js";
 import dbConnect from "./resources/database/database.js";
 
 const app = express();
-const port = 4000;
+const port = 3000;
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //Static file in path: src/resources/public
