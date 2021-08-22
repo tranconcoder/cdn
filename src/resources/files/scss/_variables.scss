@@ -1,0 +1,35 @@
+// Number
+$uploadMenuBoxContentItemCount: 4;
+// Size
+$uploadMenuBoxWidth: 80rem;
+$uploadMenuBoxHeight: 40rem;
+$uploadMenuBoxPositionTop: 10rem;
+$uploadMenuBoxBorderRadius: 2rem;
+$uploadMenuBoxNavbarHeight: 5rem;
+$uploadMenuBoxContentWidth: $uploadMenuBoxWidth * $uploadMenuBoxContentItemCount;
+$uploadMenuBoxContentHeight: $uploadMenuBoxHeight - $uploadMenuBoxNavbarHeight;
+$uploadMenuBoxContentItemWidth: $uploadMenuBoxContentWidth /
+	$uploadMenuBoxContentItemCount;
+$uploadMenuBoxContentItemHeight: $uploadMenuBoxContentHeight;
+$uploadMenuBoxContentItemPadding: 3rem;
+$uploadMenuBoxInputCtnWidth: 70rem;
+$uploadMenuBoxInputCtnHeight: 4.6rem;
+$uploadMenuBoxFileNameCtnWidth: 70rem;
+$uploadMenuBoxFileNameCtnHeight: 2rem;
+$uploadMenuBoxUploadingItemWidth: 70rem;
+$uploadMenuBoxUploadingItemHeight: 9rem;
+$uploadMenuBoxUploadingItemSeperate: 2rem;
+$uploadMenuBoxUploadingCancelBtnHeight: 3.6rem;
+$uploadMenuBoxUploadingCancelBtnWidth: 8rem;
+// Color
+$primaryColor: rgb(111, 0, 255);
+$inputBackgroundColor: rgb(235, 235, 235);
+$uploadMenuInfoPrimaryColor: rgb(0, 124, 255);
+$uploadMenuJsPrimaryColor: rgb(255, 174, 0);
+$uploadMenuCssPrimaryColor: rgb(0, 151, 221);
+$uploadMenuNextBtnPrimaryColor: rgb(0, 255, 85);
+$uploadMenuPrevBtnPrimaryColor: rgb(255, 73, 73);
+$uploadMenuUploadBtnPrimaryColor: rgb(0, 195, 255);
+$uploadMenuHideBtnPrimaryColor: rgb(0, 183, 255);
+$uploadMenuUploadBtnPrimaryColor: rgb(0, 255, 85);
+$uploadMenuBoxUploadingCancelBtnPrimaryColor: rgb(255, 73, 73);

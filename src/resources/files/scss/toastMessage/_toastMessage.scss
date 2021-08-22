@@ -1,0 +1,193 @@
+@import "./font", "./variables", "../mixin";
+
+.toast-message {
+	@include position(fixed, $toastMessageListSeperate, 0);
+	z-index: 103;
+	padding: 1rem 0 1rem 1rem;
+	background-color: rgba(0, 0, 0, 0.05);
+	border-radius: 1rem 0 0 1rem;
+	visibility: hidden;
+
+	&__list {
+		list-style: none;
+		max-height: calc(100vh - 10rem);
+		padding: 0;
+		margin: 0;
+		overflow-y: scroll;
+		will-change: all;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		&.has-navbar {
+			transform: translateY($navbarHeight);
+		}
+
+		&__item + &__item {
+			margin-top: $toastMessageItemSeperate;
+		}
+
+		&__item {
+			@include size(auto, $toastMessageItemHeight);
+			@include flex(row, center);
+			border-radius: 1rem 0 0 1rem;
+			background-color: rgb(255, 255, 255);
+			position: relative;
+			animation: showToastMessageItem ease 0.5s;
+			padding-right: 0.4rem;
+			transition: ease 0.2s;
+			will-change: all;
+			overflow: hidden;
+			user-select: none;
+
+			&:hover {
+				filter: brightness(98%);
+				cursor: pointer;
+			}
+
+			&__icon {
+				@include size($toastMessageItemHeight);
+				@include flex(row, center, center);
+
+				& > svg {
+					@include size(4.4rem);
+				}
+			}
+
+			&__message {
+				flex-grow: 1;
+
+				&__content {
+					@include size(20rem, false);
+					color: $textColor;
+					font: 600 1.5rem "Nunito", sans-serif;
+					padding: 0;
+					margin: 0.5rem;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					overflow: hidden;
+					word-wrap: break-word;
+				}
+			}
+
+			&__action {
+				@include flex(row, center);
+				margin: 0 0.3rem;
+
+				&__cancel-btn {
+					@include size(4rem);
+					border: 0;
+					transition: ease 0.3s;
+					padding: 1rem;
+
+					&:hover {
+						background-color: rgb(236, 236, 236);
+					}
+				}
+			}
+
+			&__seperate-bar {
+				@include size(0.5rem, 100%);
+				@include position(absolute, 0, 0);
+			}
+
+			&.message {
+				.toast-message__list__item__seperate-bar {
+					background-color: #66bfff;
+				}
+			}
+
+			&.warning {
+				.toast-message__list__item__seperate-bar {
+					background-color: #ffd000;
+				}
+			}
+
+			&.error {
+				.toast-message__list__item__seperate-bar {
+					background-color: #ff6666;
+				}
+			}
+		}
+	}
+
+	&__close-all {
+		@include position(absolute, calc(100% + 0.5rem), 50%);
+		@include size($toastMessageCloseAllWidth, $toastMessageCloseAllHeight);
+		@include flex(row, center, center);
+		color: rgb(0, 132, 255);
+		background-color: rgb(255, 255, 255);
+		box-shadow: 0 0.1rem 1rem 0.1rem #0000004d;
+		border-radius: 0.7rem;
+		transform: translateX(50%);
+		transform-origin: top right;
+		animation: showCloseAllToastMessageButton ease 0.5s;
+		visibility: hidden;
+
+		&:hover {
+			cursor: pointer;
+			background-color: rgb(240, 240, 240);
+		}
+
+		&__icon {
+			@include size(false, 100%);
+			padding: 0.7rem;
+		}
+
+		&__label {
+			color: #ff4444;
+			font: 500 1.5rem "Inter", sans-serif;
+		}
+
+		@keyframes showCloseAllToastMessageButton {
+			from {
+				opacity: 0;
+				transform: scale(0.8) translateX(50%);
+			}
+			to {
+				opacity: 1;
+				transform: scale(1) translateX(50%);
+			}
+		}
+
+		@keyframes hideCloseAllToastMessageButton {
+			from {
+				opacity: 1;
+				transform: scale(1) translateX(50%);
+			}
+			to {
+				opacity: 0;
+				transform: scale(0.8) translateX(50%);
+			}
+		}
+	}
+}
+
+// Animation
+@keyframes showToastMessageItem {
+	0% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes hideToastMessageItem {
+	0% {
+		height: $toastMessageItemHeight;
+		margin-bottom: $toastMessageItemSeperate;
+		opacity: 1;
+		transform: translateX(0);
+	}
+	100% {
+		height: 0;
+		margin-bottom: 0;
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}

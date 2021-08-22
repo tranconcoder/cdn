@@ -1,0 +1,588 @@
+@import "./mixin";
+@import "./variables", "./font";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+.container-xxl {
+	margin-top: 3rem;
+
+	.tools-bar__upload-btn {
+		@include size(14rem, 4rem);
+		color: #fff;
+		font-size: 1.6rem;
+		font-weight: 600;
+		border: 0;
+		border-radius: 1rem;
+		background-color: $primaryColor;
+		transition: all linear 0.2s;
+
+		&:hover {
+			color: $primaryColor;
+			background-color: #fff;
+			border: 0.2rem solid $primaryColor;
+		}
+	}
+
+	.tools-list {
+		margin-top: 0;
+
+		> .tools-item-wrapper {
+			> .tools-item {
+				@include flex(column, center);
+				@include position(relative);
+				box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+				border-radius: 2rem;
+
+				> h2 {
+					font-size: 2rem;
+					margin: 1rem 0 2rem 0;
+				}
+
+				> .button-ctn {
+					@include size(calc(100% - 2rem), false);
+					@include flex(column, center);
+
+					> button {
+						@include size(100%, 3.6rem);
+						border-radius: 1rem;
+						border: 0;
+						background-color: rgb(111, 0, 255);
+						font-size: 1.4rem;
+						font-weight: bold;
+						color: #fff;
+						transition: all linear 0.2s;
+						margin-bottom: 1rem;
+
+						&:hover {
+							color: $primaryColor;
+							background-color: #fff;
+							border: 0.2rem solid $primaryColor;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.upload-menu {
+	@include flex(column, center);
+	display: none;
+
+	&__layout {
+		@include position(fixed, 0, 0, 0, 0);
+		background-color: rgba(0, 0, 0, 0.2);
+		z-index: 1;
+	}
+
+	&__box {
+		@include size($uploadMenuBoxWidth, $uploadMenuBoxHeight);
+		@include position(fixed, $uploadMenuBoxPositionTop, 50%);
+		@include flex(column, center);
+		border-radius: $uploadMenuBoxBorderRadius;
+		background-color: #fff;
+		overflow: hidden;
+		transform-origin: center;
+		transform: translateX(50%);
+		z-index: 2;
+
+		&__navbar {
+			@include size(100%, $uploadMenuBoxNavbarHeight);
+			@include flex(row, center, flex-end);
+			padding: 0 2.5rem;
+			border-bottom: 0.1rem solid #f1f1f1;
+
+			&__label {
+				font-size: 1.6rem;
+				margin-right: auto;
+			}
+
+			&__close-btn {
+				font-size: 2.4rem;
+				color: rgb(160, 159, 159);
+
+				&:hover {
+					cursor: pointer;
+					color: rgb(73, 73, 73);
+				}
+			}
+		}
+
+		&__content {
+			@include size(auto, $uploadMenuBoxContentHeight);
+			@include flex(row, flex-start);
+			align-self: flex-start;
+			transition: linear 0.3s;
+
+			& > * {
+				@include size($uploadMenuBoxContentItemWidth, 100%);
+				@include position(relative);
+				padding: $uploadMenuBoxContentItemPadding;
+			}
+
+			&__info {
+				@include flex(row, center);
+				padding: 0;
+
+				& > * {
+					@include size(50%, 100%);
+				}
+
+				&__thumb {
+					object-fit: contain;
+					object-position: center;
+				}
+
+				&__form {
+					@include flex(column, stretch, center);
+					padding: 3rem 3rem 7rem;
+
+					& > input {
+						@include size(100%, 4rem);
+						padding: 0 0 0.1rem 2rem;
+						border: 0.2rem solid #ffffff00;
+						border-radius: 1rem;
+						font-size: 1.6rem;
+						font-weight: 600;
+						background-color: $inputBackgroundColor;
+						transition: linear 0.1s;
+
+						&:focus {
+							border-color: $uploadMenuInfoPrimaryColor;
+						}
+
+						&::placeholder {
+							color: $uploadMenuInfoPrimaryColor;
+							opacity: 0.5;
+						}
+
+						&:not(:last-child) {
+							margin-bottom: 2rem;
+						}
+					}
+
+					&__file-to-upload {
+						@include flex(row, center, flex-end);
+
+						& > * {
+							font-size: 1.4rem;
+							font-weight: bold;
+						}
+
+						& > h2 {
+							font-size: 1.3rem;
+							font-weight: 500;
+							margin-right: 1rem;
+						}
+
+						& > input {
+							@include size(1.4rem);
+							margin-right: 0.3rem;
+						}
+
+						& > label {
+							user-select: none;
+							margin-right: 1rem;
+						}
+					}
+				}
+			}
+
+			&__js-input,
+			&__css-input {
+				@include flex(column, center);
+
+				.js-input-introduce,
+				.css-input-introduce {
+					@include size(100%, false);
+					@include flex(column, center);
+
+					&__logo {
+						@include size(12rem);
+						border-radius: 50%;
+						box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+					}
+
+					&__title {
+						font-size: 2rem;
+						text-align: center;
+					}
+				}
+
+				.js-input-handle,
+				.css-input-handle {
+					@include size($uploadMenuBoxInputCtnWidth, $uploadMenuBoxInputCtnHeight);
+					@include flex(row, center);
+					margin-top: 1rem;
+
+					&__input {
+						@include size(false, 100%);
+						flex-grow: 1;
+						border: 0;
+						border-radius: 1rem;
+						background-color: $inputBackgroundColor;
+						padding: 0 2rem;
+						font-size: 1.6rem;
+						font-weight: 600;
+
+						&:focus {
+							border: 0.2rem solid;
+						}
+
+						&:disabled {
+							cursor: not-allowed;
+							color: rgb(141, 141, 141);
+						}
+					}
+
+					&__input-file-label {
+						@include size(6rem, 4.6rem);
+						@include flex();
+						margin-left: 1rem;
+						border-radius: 1rem;
+						transition: all ease 0.2s;
+
+						&:hover {
+							cursor: pointer;
+						}
+
+						i {
+							color: #fff;
+							font-size: 2rem;
+							transform: translate(0.2rem, -0.1rem);
+							margin: auto;
+							transition: all linear 0.1s;
+						}
+					}
+				}
+
+				.js-input-handle {
+					&__input {
+						&::placeholder {
+							color: $uploadMenuJsPrimaryColor;
+							opacity: 0.7;
+						}
+
+						&:focus {
+							border-color: $uploadMenuJsPrimaryColor;
+						}
+					}
+
+					&__input-file-label {
+						border: 0.2rem solid $uploadMenuJsPrimaryColor;
+						background-color: $uploadMenuJsPrimaryColor;
+
+						&:hover {
+							background-color: #fff;
+
+							i {
+								color: $uploadMenuJsPrimaryColor;
+							}
+						}
+					}
+				}
+				.css-input-handle {
+					&__input {
+						&::placeholder {
+							color: $uploadMenuCssPrimaryColor;
+							opacity: 0.7;
+						}
+
+						&:focus {
+							border-color: $uploadMenuCssPrimaryColor;
+						}
+					}
+
+					&__input-file-label {
+						border: 0.2rem solid $uploadMenuCssPrimaryColor;
+						background-color: $uploadMenuCssPrimaryColor;
+
+						&:hover {
+							background-color: #fff;
+
+							i {
+								color: $uploadMenuCssPrimaryColor;
+							}
+						}
+					}
+				}
+
+				.js-input-file-name,
+				.css-input-file-name {
+					@include size(
+						$uploadMenuBoxFileNameCtnWidth,
+						$uploadMenuBoxFileNameCtnHeight
+					);
+					@include flex(row, center);
+					font-size: 1.5rem;
+					font-weight: 600;
+					margin-top: 0.8rem;
+					visibility: hidden;
+
+					i {
+						color: red;
+						font-size: 2rem;
+						margin-left: 0.5rem;
+
+						&:hover {
+							cursor: pointer;
+						}
+					}
+				}
+			}
+
+			&__uploading {
+				@include flex(column, center);
+
+				.uploading-list {
+					@include size(100%, false);
+					@include flex(column, center);
+
+					& > *:not(:last-child) {
+						margin-bottom: $uploadMenuBoxUploadingItemSeperate;
+					}
+
+					&__item {
+						@include size(
+							$uploadMenuBoxUploadingItemWidth,
+							$uploadMenuBoxUploadingItemHeight
+						);
+						@include flex(row, center);
+						border-radius: 1rem;
+						box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+						overflow: hidden;
+						display: none;
+
+						&__icon {
+							@include size(false, 100%);
+							padding: 2rem;
+						}
+
+						&__info {
+							@include size(false, 100%);
+							@include flex(column, flex-start, center);
+							@include position(relative);
+							flex-grow: 1;
+
+							&__name {
+								font-size: 1.6rem;
+								font-weight: 600;
+								color: rgb(124, 124, 124);
+							}
+
+							&__progress-bar {
+								@include size(100%, 0.7rem);
+								@include position(relative);
+								margin: 0.7rem 0 0.5rem;
+
+								&__current {
+									@include size(0%, 100%);
+									@include position(absolute);
+									background-color: $primaryColor;
+									border-radius: 2rem;
+									z-index: 2;
+									transition: linear 0.05s;
+								}
+
+								&__total {
+									@include size(100%);
+									@include position(absolute);
+									background-color: #f2f2f2;
+									border-radius: 2rem;
+									z-index: 1;
+								}
+							}
+
+							&__upload-info {
+								@include size(100%, false);
+								@include flex(row, center, space-between);
+
+								span {
+									@include flex(row, center);
+									font-size: 1.4rem;
+									font-weight: 600;
+									color: rgb(124, 124, 124);
+								}
+							}
+						}
+
+						&__cancel-btn-ctn {
+							$paddingSize: (
+									$uploadMenuBoxUploadingItemHeight -
+										$uploadMenuBoxUploadingCancelBtnHeight
+								) / 2;
+							padding: $paddingSize 2rem;
+
+							button {
+								@include size(
+									$uploadMenuBoxUploadingCancelBtnWidth,
+									$uploadMenuBoxUploadingCancelBtnHeight
+								);
+								border: 0.2rem solid $uploadMenuBoxUploadingCancelBtnPrimaryColor;
+								border-radius: 1rem;
+								background-color: $uploadMenuBoxUploadingCancelBtnPrimaryColor;
+								transition: linear 0.1s;
+
+								p {
+									color: #fff;
+									font-size: 1.4rem;
+									font-weight: 600;
+									transition: linear 0.1s;
+									transform: translateY(-0.1rem);
+								}
+
+								&:hover {
+									background-color: #fff;
+
+									p {
+										color: $uploadMenuBoxUploadingCancelBtnPrimaryColor;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				.button-ctn {
+					display: block;
+					margin-top: auto;
+				}
+			}
+		}
+	}
+
+	input.fail {
+		border-color: rgb(255, 88, 88);
+		color: red;
+
+		&::placeholder {
+			color: red;
+		}
+	}
+}
+
+.upload-menu-button-ctn {
+	@include size(100%, 4rem);
+	@include flex(row, center);
+	@include position(absolute, false, false, $uploadMenuBoxContentItemPadding, 0);
+	padding: 0 $uploadMenuBoxContentItemPadding;
+
+	& > * {
+		@include size(8rem, 100%);
+		display: block;
+		border-radius: 1rem;
+		transition: linear 0.1s;
+
+		p {
+			color: #fff;
+			font-size: 1.7rem;
+			font-weight: 600;
+			line-height: 1.6rem;
+			transform: translateY(-0.1rem);
+		}
+	}
+
+	&__next {
+		background-color: $uploadMenuNextBtnPrimaryColor;
+		border: 0.2rem solid $uploadMenuNextBtnPrimaryColor;
+		margin-left: auto;
+
+		&:hover {
+			background-color: #fff;
+
+			p {
+				color: $uploadMenuNextBtnPrimaryColor;
+			}
+		}
+	}
+
+	&__prev {
+		background-color: $uploadMenuPrevBtnPrimaryColor;
+		border: 0.2rem solid $uploadMenuPrevBtnPrimaryColor;
+
+		&:hover {
+			background-color: #fff;
+
+			p {
+				color: $uploadMenuPrevBtnPrimaryColor;
+			}
+		}
+	}
+
+	&__upload {
+		background-color: $uploadMenuUploadBtnPrimaryColor;
+		border: 0.2rem solid $uploadMenuUploadBtnPrimaryColor;
+		margin-left: auto;
+
+		&:hover {
+			background-color: #fff;
+
+			p {
+				color: $uploadMenuUploadBtnPrimaryColor;
+			}
+		}
+	}
+
+	&__hide {
+		background-color: $uploadMenuHideBtnPrimaryColor;
+		border: 0.2rem solid $uploadMenuHideBtnPrimaryColor;
+		margin-left: auto;
+
+		&:hover {
+			background-color: #fff;
+
+			p {
+				color: $uploadMenuHideBtnPrimaryColor;
+			}
+		}
+	}
+}
+
+// Animation
+@keyframes showUploadMenuLayout {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes hideUploadMenuLayout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes showUploadMenuBox {
+	from {
+		opacity: 0;
+		transform: translateX(50%) scale(0);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(50%) scale(1);
+	}
+}
+
+@keyframes hideUploadMenuBox {
+	from {
+		opacity: 1;
+		transform: translateX(50%) scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: translateX(50%) scale(0);
+	}
+}

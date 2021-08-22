@@ -1,0 +1,219 @@
+<div class="container-xxl p-4">
+	<div class="row tools-bar">
+		<button class="tools-bar__upload-btn">Thêm</button>
+	</div>
+	<div
+		class="tools-list row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 p-0 g-5"
+	></div>
+</div>
+
+<div class="upload-menu">
+	<form class="upload-menu__box">
+		<div class="upload-menu__box__navbar">
+			<h2 class="upload-menu__box__navbar__label">
+				Upload
+			</h2>
+			<div class="upload-menu__box__navbar__close-btn">
+				<i class="fal fa-times"></i>
+			</div>
+		</div>
+		<div class="upload-menu__box__content">
+			<div class="upload-menu__box__content__info">
+				<img
+					src="/files/img/upload-box-info-thumb.jpg"
+					alt=""
+					class="upload-menu__box__content__info__thumb"
+				/>
+				<div class="upload-menu__box__content__info__form">
+					<input
+						type="text"
+						class="upload-menu__box__content__info__form__name"
+						placeholder="Tên dự án..."
+					/>
+					<input
+						type="text"
+						class="upload-menu__box__content__info__form__desc"
+						placeholder="Mô tả về dự án..."
+					/>
+					<div class="upload-menu__box__content__info__form__file-to-upload">
+						<h2>Tôi muốn đăng</h2>
+						<input
+							id="js-file-select"
+							class="upload-menu__box__content__info__form__file-to-upload__js-upload"
+							type="checkbox"
+						/>
+						<label for="js-file-select">JavaScript</label>
+						<input
+							id="css-file-select"
+							class="upload-menu__box__content__info__form__file-to-upload__css-upload"
+							type="checkbox"
+						/>
+						<label for="css-file-select">CSS</label>
+					</div>
+
+					<div class="upload-menu-button-ctn">
+						<button class="upload-menu-button-ctn__next" type="button">
+							<p>Next</p>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="upload-menu__box__content__js-input">
+				<div class="js-input-introduce">
+					<img
+						class="js-input-introduce__logo"
+						src="/files/img/javascript.svg"
+						alt=""
+					/>
+					<p class="js-input-introduce__title">JavaScript</p>
+				</div>
+
+				<div class="js-input-handle">
+					<input
+						class="js-input-handle__input"
+						name="js-input-text"
+						type="text"
+						placeholder="Nhập tên tệp..."
+					/>
+					<label class="js-input-handle__input-file-label" for="js-input-file">
+						<i class="far fa-edit"></i>
+					</label>
+					<input
+						id="js-input-file"
+						name="js-input-file"
+						class="js-input-handle__input-file"
+						type="file"
+						style="display: none;"
+					/>
+				</div>
+
+				<div class="js-input-file-name">
+					<p></p>
+					<i class="fas fa-times-circle"></i>
+				</div>
+
+				<div class="upload-menu-button-ctn">
+					<button class="upload-menu-button-ctn__prev" type="button">
+						<p>Prev</p>
+					</button>
+					<button class="upload-menu-button-ctn__next" type="button">
+						<p>Next</p>
+					</button>
+
+				</div>
+			</div>
+			<div class="upload-menu__box__content__css-input">
+				<div class="css-input-introduce">
+					<img class="css-input-introduce__logo" src="/files/img/css.svg" alt="" />
+					<p class="css-input-introduce__title">CSS</p>
+				</div>
+
+				<div class="css-input-handle">
+					<input
+						class="css-input-handle__input"
+						name="css-input-text"
+						type="text"
+						placeholder="Nhập tên tệp..."
+					/>
+					<label class="css-input-handle__input-file-label" for="css-input-file">
+						<i class="far fa-edit"></i>
+					</label>
+					<input
+						id="css-input-file"
+						name="css-input-file"
+						class="css-input-handle__input-file"
+						type="file"
+						style="display: none;"
+					/>
+				</div>
+
+				<div class="css-input-file-name">
+					<p></p>
+					<i class="fas fa-times-circle"></i>
+				</div>
+
+				<div class="upload-menu-button-ctn">
+					<button class="upload-menu-button-ctn__prev" type="button">
+						<p>Prev</p>
+					</button>
+					<button class="upload-menu-button-ctn__upload" type="button">
+						<p>Upload</p>
+					</button>
+				</div>
+			</div>
+			<div class="upload-menu__box__content__uploading">
+				<ul class="uploading-list">
+					<li class="uploading-list__item js">
+						<img
+							src="/files/img/documentJs.svg"
+							alt=""
+							class="uploading-list__item__icon"
+						/>
+						<div class="uploading-list__item__info">
+							<h4 class="uploading-list__item__info__name"></h4>
+							<div class="uploading-list__item__info__progress-bar">
+								<div
+									class="uploading-list__item__info__progress-bar__total"
+								></div>
+								<div
+									class="uploading-list__item__info__progress-bar__current"
+								></div>
+							</div>
+							<span class="uploading-list__item__info__upload-info">
+								<span class="uploading-list__item__info__upload-info__size">
+								</span>
+								<span
+									class="uploading-list__item__info__upload-info__percent"
+								></span>
+							</span>
+						</div>
+						<div class="uploading-list__item__cancel-btn-ctn">
+							<button type="button">
+								<p>Cancel</p>
+							</button>
+						</div>
+					</li>
+					<li class="uploading-list__item css">
+						<img
+							src="/files/img/documentCss.svg"
+							alt=""
+							class="uploading-list__item__icon"
+						/>
+						<div class="uploading-list__item__info">
+							<h4 class="uploading-list__item__info__name"></h4>
+							<div class="uploading-list__item__info__progress-bar">
+								<div
+									class="uploading-list__item__info__progress-bar__total"
+								></div>
+								<div
+									class="uploading-list__item__info__progress-bar__current"
+								></div>
+							</div>
+							<span class="uploading-list__item__info__upload-info">
+								<span
+									class="uploading-list__item__info__upload-info__size"
+								></span>
+								<span
+									class="uploading-list__item__info__upload-info__percent"
+								></span>
+							</span>
+						</div>
+						<div class="uploading-list__item__cancel-btn-ctn">
+							<button type="button">
+								<p>Cancel</p>
+							</button>
+						</div>
+					</li>
+				</ul>
+				<div class="upload-menu-button-ctn">
+					<button class="upload-menu-button-ctn__hide" type="button">
+						<p>Hide</p>
+					</button>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="upload-menu__layout"></div>
+</div>
+
+<script type="module" src="/files/js/home/ui.js"></script>
